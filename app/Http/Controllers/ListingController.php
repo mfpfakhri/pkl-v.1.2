@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Paket;
 use Illuminate\Support\Facades\Auth;
+
+use App\Models\Paket;
+use App\User;
+
 class ListingController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -83,14 +88,20 @@ class ListingController extends Controller
         //
     }
 
-    public function detail($id)
+    public function detail(Request $request, $id)
     {
         $paket_id=$id;
         $pakets = Paket::where('id','=',$paket_id)->get();
-        if(Auth::user()){
-          $query2 = Auth::user()->id;
+        // dd($pakets);
+        if(!Auth::user()){
+          $query2 = "NULL";
+          // dd($pakets, $query2);
+          // return redirect('/login')->with('warning', 'Silahkan login terlebih dahulu');
+          $request->session()->flash('warningdetail', 'Silahkan login terlebih dahulu untuk memesan paket');
+          return view('/detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
         }
-
-        return view('detail',['id'=>$id,'pakets'=>$pakets, 'query2'=>$query2]);
+        $query2 = Auth::user()->id;
+        // dd($id,$pakets,$query2);
+        return view('customer.detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
     }
 }

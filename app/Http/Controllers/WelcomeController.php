@@ -76,9 +76,9 @@ class WelcomeController extends Controller
         ->where('id_lokasi','=',$destination)->get();
         if(Auth::user()){
           $query2 = Auth::user()->id;
+          return view('listing',['pakets'=>$pakets, 'query2'=>$query2]);
         }
-
-       return view('listing',['pakets'=>$pakets, 'query2'=>$query2]);
+       return view('listing',['pakets'=>$pakets,]);
     }
 
     /**
