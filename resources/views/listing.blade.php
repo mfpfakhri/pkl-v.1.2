@@ -106,7 +106,7 @@
 								<input type="hidden" id="id_paket" value="{{$paket->id}}">
 								<div class="close-div">
 									<div class="listing-trapezium-change" id="pop">
-										<div class="row normalize2" style="padding-left:10px;padding-right:10px;">
+										<div class="row normalize2">
 											<div class="col-md-6 col-sm-6 col-xs-6">
 												<p class="listing-title-close">
 													Adventure Trip
@@ -117,18 +117,21 @@
 													{{$paket->inf_lokasi->lokasi_nama}}
 											</div>
 										</div>
+										<div class="row normalize2 bot-desc">
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<p class="listing-desc-close">
+													{{$paket->detail}}
+											</div>
+										</div>
 										<div class="row normalize2 bot-info2">
 											<div class="col-md-3 col-sm-3 col-xs-3">
 												<p class="listing-price-bot">
-													${{$paket->price}}
+													IDR{{$paket->price}}
 											</div>
 											<div class="col-md-4 col-sm-4 col-xs-4">
 												<p class="listing-person-bot">
 													PER PERSON
 												</p>
-											</div>
-											<div class="col-md-5 col-sm-5 col-xs-5">
-													{{$paket->detail}}
 											</div>
 										</div>
 									</div>
@@ -151,19 +154,19 @@
 											<div class="row">
 												<div class="col-md-12 col-sm-12 col-xs-12">
 													<div class="row">
-														<div class="col-md-4 col-sm-4 col-xs-4">
+														<div class="col-md-5 col-sm-5 col-xs-5">
 															<p class="listing-price-shown">
-																${{$paket->price}}
+																IDR{{$paket->price}}
 															</p>
 														</div>
-														<div class="col-md-5 col-sm-5 col-xs-5">
+														<div class="col-md-7 col-sm-7 col-xs-7">
 															<p class="listing-person-shown">
 																PER PERSON
 															</p>
 														</div>
-														<div class="col-md-3 col-sm-3 col-xs-3">
-															
-														</div>
+<!-- 														<div class="col-md-3 col-sm-3 col-xs-3">
+															{{$paket->detail}}
+														</div> -->
 													</div>
 												</div>
 											</div>
